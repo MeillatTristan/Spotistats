@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Top Artistes{% endblock %}
+
+{% block body %}
+<h1 class="title">Top artistes 
+  {% if createdAt is defined %}
+  du {{ createdAt|date("d/m/Y") }}
+  {% endif %}
+</h1>
+
+<div class="tabs">
+  <ul class="list">
+    <li class="tab active" data-target="#content1">Dernier mois</li>
+    <li class="tab" data-target="#content2">6 derniers mois</li>
+    <li class="tab" data-target="#content3">All time</li>
+  </ul>
+</div>
+<div class="contents">
+  <div id="content1" class="content artists">
+    {% for song in topTracks.short.items %}
+      <div class="artist">
+        <div class="containerCard">
+          <p class="rank">{{ loop.index }}.</p>
+          <p>{{ song.name }}</p>
+        </div>
+        <img src="{{ song.images.1.url }}" alt="">
+      </div>
+    {% endfor %}
+  </div>
+  <div id="content2" class="content artists">
+    {% for song in topTracks.mid.items %}
+      <div class="artist">
+        <div class="containerCard">
+          <p class="rank">{{ loop.index }}.</p>
+          <p>{{ song.name }}</p>
+        </div>
+        <img src="{{ song.images.1.url }}" alt="">
+      </div>
+    {% endfor %}
+  </div>
+  <div id="content3" class="content artists">
+    {% for song in topTracks.long.items %}
+      <div class="artist">
+        <div class="containerCard">
+          <p class="rank">{{ loop.index }}.</p>
+          <p>{{ song.name }}</p>
+        </div>
+        <img src="{{ song.images.1.url }}" alt="">
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

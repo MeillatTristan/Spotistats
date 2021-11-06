@@ -1,0 +1,21 @@
+# config/packages/calliostro_spotify_web_api.yaml
+calliostro_spotify_web_api:
+
+  # Your Client ID
+  client_id: 917c0ca91bc244dc90948fea84cba0a4 # Required
+
+  # Your Client Secret
+  client_secret: 7a89db7f03914d1ba97955f6ce9ca57c # Required
+
+  # Options for SpotifyWebAPI client
+  # https://github.com/jwilsson/spotify-web-api-php/blob/main/docs/examples/setting-options.md
+  options:
+    auto_refresh:         false
+    auto_retry:           false
+    return_assoc:         false
+
+  # Address to redirect to after authentication success OR failure
+  redirect_uri: http://spotistats/callback # Example: 'https://127.0.0.1:8000/callback/'
+
+  # Service ID of the token provider that provides the user's access token
+  token_provider:       calliostro_spotify_web_api.token_provider

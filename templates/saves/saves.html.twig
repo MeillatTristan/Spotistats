@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sauvegardes{% endblock %}
+
+{% block body %}
+<h1 class="title">Top titres</h1>
+
+<div class="tabs">
+  <ul class="list">
+    <li class="tab active" data-target="#content1">Top titres</li>
+    <li class="tab" data-target="#content2">Top artistes</li>
+  </ul>
+</div>
+<div class="contents">
+  <div id="content1" class="content saves">
+    {% for save in savesTracks %}
+    <div class="save">
+      <p class="date">Sauvegarde du {{ save.createdAt|date("d/m/Y") }}</p>
+      <a href="/saves/tracks/{{ save.id }}">Voir la sauvegarde</a>
+    </div>
+    {% endfor %}
+  </div>
+  <div id="content2" class="content saves">
+    {% for save in savesArtists %}
+    <div class="save">
+      <p class="date">Sauvegarde du {{ save.createdAt|date("d/m/Y") }}</p>
+      <a href="/saves/artists/{{ save.id }}">Voir la sauvegarde</a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

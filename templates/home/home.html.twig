@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <div class="blockHome">
+        <div class="containerBubble">
+            <p>Faites le points avec vos goûts !</p>
+        </div>
+        <div class="containerSide">
+            <div class="containerFirstText">
+                <p>Sauvegarder <br> vos top</p>
+            </div>
+            <div class="containerConnexionBlock">
+                {% if app.user %}
+                    <p>Accédez à vos tops</p>
+                    <a href="/tracks" class="buttonColor">Vos tops</a>
+                {% else %}
+                    <p>Connectez-vous à Spotify</p>
+                    <a href="/login" class="buttonColor">Se connecter</a>
+                {% endif %}
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}
