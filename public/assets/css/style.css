@@ -56,9 +56,15 @@ nav li img{
 }
 
 .blockHome .containerBubble{
-  background-image: url("../images/bubble.png");
-  width: 801px;
+  width: 50%;
   height: 820px;
+  position: relative;
+}
+
+.blockHome .containerBubble img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .blockHome .containerBubble p{
@@ -70,10 +76,16 @@ nav li img{
   padding-left: 80px;
   line-height: 110px;
   padding-top: 70px;
+  z-index: 2;
+  position: relative;
 }
 
 .blockHome .containerSide{
-  width: 40%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 50px;
 }
 
 .blockHome .containerSide .containerFirstText{
@@ -83,11 +95,10 @@ nav li img{
 
 .blockHome .containerSide .containerFirstText p{
   color: #F1789A;
-  width: 600px;
   height: 300px;
-  padding-top: 55px;
-  padding-left: 50px;
   text-align: right;
+  padding-top: 75px;
+  padding-right: 50px;
 }
 
 .blockHome .containerSide .containerConnexionBlock{
@@ -237,6 +248,7 @@ h1.title{
   column-gap: 20%;
   row-gap: 50px;
   margin-top: 50px;
+  justify-content: center;
 }
 
 .content.artists.show{
@@ -361,4 +373,165 @@ h1.title{
   background: white;
   color: black;
   border: solid 2px #F7B4B4;
+}
+
+nav .fa-bars{
+  display: none;
+}
+
+@media only screen and (max-width: 1300px){
+  .blockHome .containerBubble p{
+    font-size: 85px;
+    padding-left: 30px;
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 1000px){
+  .blockHome{
+    flex-direction: column;
+  }
+
+  .blockHome .containerBubble{
+    width: 100%;
+    height: auto;
+    background: linear-gradient(90deg, #F7B4B4 0%, #FFB992 100%);
+    border-bottom-left-radius: 100% 15%;
+    border-bottom-right-radius: 100% 15%;
+  }
+
+  .blockHome .containerBubble p{
+    width: 90%;
+    padding: 0 50px 0 50px;
+    text-align: center;
+    font-size: 65px;
+  }
+
+  .blockHome .containerBubble img{
+    display: none;
+  }
+
+  nav ul li ul{
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(360deg, #F7B4B4 0%, #FFB992 100%);
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    right: 0;
+    justify-content: flex-start;
+    width: 300px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+  .menu{
+    transform: translateX(330px);
+    transition: 0.3s;
+  }
+
+  .menu.menuDisplay{
+    transform: translateX(0px);
+  }
+
+  nav ul li ul li{
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
+
+  nav .fa-bars{
+    display: block;
+    position: absolute;
+    left: -50px;
+    top: 20px;
+    font-size: 35px;
+    cursor: pointer;
+  }
+
+  .blockHome .containerSide{
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .blockHome .containerSide .containerConnexionBlock{
+    padding: 0;
+    align-items: center;
+    width: 100%;
+    margin-top: -50px;
+    z-index: 2;
+  }
+
+  .blockHome .containerSide .containerConnexionBlock a{
+    background: #ff9191;
+    border-radius: 20px;
+  }
+
+  .blockHome .containerSide .containerConnexionBlock p{
+    display: none;
+  }
+
+  .blockHome .containerSide .containerFirstText p{
+    padding: 0;
+    text-align: center;
+    padding-top: 30px;
+  }
+
+  .blockHome .containerSide .containerFirstText{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 700px){
+  h1.title, .tabs, .contents{
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .song p{
+      font-size: 15px;
+  }
+
+  .song .rank{
+    font-size: 20px;
+  }
+
+  .song img{
+    width: 55px;
+    height: 55px;
+  }
+}
+
+@media only screen and (max-width: 550px){
+  .blockHome .containerBubble p{
+    font-size: 50px;
+    width: 80%;
+    line-height: 80px;
+  }
+
+  .blockHome .containerSide .containerFirstText p{
+    font-size: 50px;
+    padding: 0 20px 0 20px;
+    line-height: 70px;
+
+  }
+
+  h1.title, .tabs, .contents{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .artist img{
+    width: 250px;
+  }
+
+  .tabs ul li{
+    font-size: 17px;
+  }
+
+  .tabs .list{
+    gap: 30px;
+  }
 }

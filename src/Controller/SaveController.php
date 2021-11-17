@@ -37,18 +37,32 @@ class SaveController extends AbstractController
      */
     public function showSavesTracks(Save $save){
       $songs = $save->getSongs();
-      $tops = ['short' => ['items' => []], 'mid' => ['items' => []], 'long' => ['items' => []]];
+      $songsArray = ['short' => ['items' => []], 'mid' => ['items' => []], 'long' => ['items' => []]];
+      $tops = ['short' => [], 'mid' => [], 'long' => []];
       foreach ($songs as $song) {
-        $songSpotify = $this->api->getTrack($song->getSpotifyId());
         if($song->getTimeRange() == 'short'){
-          $tops['short']['items'][] = $songSpotify;
+          $songsArray['short']['items'][] = $song->getSpotifyId();
         }
         elseif($song->getTimeRange() == 'mid'){
-          $tops['mid']['items'][] = $songSpotify;
+          $songsArray['mid']['items'][] = $song->getSpotifyId();
         }
         elseif($song->getTimeRange() == 'long'){
-          $tops['long']['items'][] = $songSpotify;
+          $songsArray['long']['items'][] = $song->getSpotifyId();
         }
+      }
+
+      $short = $this->api->getTracks($songsArray['short']['items']);
+      $mid = $this->api->getTracks($songsArray['mid']['items']);
+      $long = $this->api->getTracks($songsArray['long']['items']);
+      
+      foreach ($short as $track) {
+        $tops['short']['items'] = $track;
+      }
+      foreach ($mid as $track) {
+        $tops['mid']['items'] = $track;
+      }
+      foreach ($long as $track) {
+        $tops['long']['items'] = $track;
       }
 
       return $this->render('top/tracks.html.twig',[
@@ -62,18 +76,32 @@ class SaveController extends AbstractController
      */
     public function showSavesArtists(Save $save){
       $songs = $save->getSongs();
-      $tops = ['short' => ['items' => []], 'mid' => ['items' => []], 'long' => ['items' => []]];
+      $songsArray = ['short' => ['items' => []], 'mid' => ['items' => []], 'long' => ['items' => []]];
+      $tops = ['short' => [], 'mid' => [], 'long' => []];
       foreach ($songs as $song) {
-        $songSpotify = $this->api->getArtist($song->getSpotifyId());
         if($song->getTimeRange() == 'short'){
-          $tops['short']['items'][] = $songSpotify;
+          $songsArray['short']['items'][] = $song->getSpotifyId();
         }
         elseif($song->getTimeRange() == 'mid'){
-          $tops['mid']['items'][] = $songSpotify;
+          $songsArray['mid']['items'][] = $song->getSpotifyId();
         }
         elseif($song->getTimeRange() == 'long'){
-          $tops['long']['items'][] = $songSpotify;
+          $songsArray['long']['items'][] = $song->getSpotifyId();
         }
+      }
+
+      $short = $this->api->getArtists($songsArray['short']['items']);
+      $mid = $this->api->getArtists($songsArray['mid']['items']);
+      $long = $this->api->getArtists($songsArray['long']['items']);
+      
+      foreach ($short as $track) {
+        $tops['short']['items'] = $track;
+      }
+      foreach ($mid as $track) {
+        $tops['mid']['items'] = $track;
+      }
+      foreach ($long as $track) {
+        $tops['long']['items'] = $track;
       }
 
       return $this->render('top/artists.html.twig',[
